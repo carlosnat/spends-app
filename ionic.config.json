@@ -1,0 +1,7 @@
+{
+  "name": "spends",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
