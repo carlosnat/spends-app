@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { OperationProvider } from '../../providers/operation/operation';
+import { DISABLED } from '@angular/forms/src/model';
 
 @IonicPage()
 @Component({
@@ -17,6 +18,7 @@ export class OperationFormPage {
   public operationForm: FormGroup;
   public labelsOptions: any;
   public base64Image: any;
+  public operationToEdit: any;
 
   constructor(
     private camera: Camera,
@@ -28,23 +30,26 @@ export class OperationFormPage {
     this.storage.get('account').then( val => {
       this.account = val;
     });
-    this.createOperationForm();
     this.operationType = this.navParams.get('operationType');
+    this.operationToEdit = this.navParams.get('operation');
+    this.createOperationForm();
   }
 
   createOperationForm() {
     this.operationForm = this.fb.group({
-      group: [''],
-      category: [''],
-      amount: [''],
-      description: [''],
-      occurrenceDate: [''],
-      type: ['']
+      group: this.operationToEdit.group ? this.operationToEdit.group._id : '',
+      category: [this.operationToEdit.category ? this.operationToEdit.category.name : ''],
+      amount: [this.operationToEdit.amount ? this.operationToEdit.amount : ''],
+      description: [this.operationToEdit.description ? this.operationToEdit.description : ''],
+      occurrenceDate: [this.operationToEdit.occurrenceDate ? this.operationToEdit.occurrenceDate : ''],
+      type: [this.operationToEdit.type ? this.operationToEdit.type : '']
     });
+
   }
 
+
   async ionViewDidEnter() {
-    console.log('ionViewDidEnter OperationFormPage', this.operationType, this.account);
+    console.log('ionViewDidEnter OperationFormPage', this.operationToEdit);
   }
 
   selectCategory() {

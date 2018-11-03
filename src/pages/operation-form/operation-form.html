@@ -9,14 +9,20 @@
 
 <ion-content padding>
 
-  <p *ngIf="operationType"> Nuevo Ingreso</p>
-  <p *ngIf="!operationType"> Nuevo Egreso</p>
+  <span *ngIf="!operationToEdit">
+    <p *ngIf="operationType"> Nuevo Ingreso</p>
+    <p *ngIf="!operationType"> Nuevo Egreso</p>
+  </span>
+
+  <span *ngIf="operationToEdit">
+    <p>Detalles de operación</p>
+  </span>
 
   <ion-list [formGroup]="operationForm">
 
     <ion-item>
       <ion-label>Categoria</ion-label>
-      <ion-select (ionChange)="selectCategory()" formControlName="group">
+      <ion-select (ionChange)="selectCategory()" formControlName="group" [disabled]="operationToEdit">
         <ion-option [value]="category._id" *ngFor="let category of account.spendsGroups">
           {{ category.name }}
         </ion-option>
@@ -25,7 +31,7 @@
 
     <ion-item>
       <ion-label>Labels</ion-label>
-      <ion-select formControlName="category">
+      <ion-select formControlName="category" [disabled]="operationToEdit">
         <ion-option [value]="label._id" *ngFor="let label of labelsOptions">
           {{ label.name }}
         </ion-option>
@@ -34,24 +40,24 @@
 
     <ion-item>
       <ion-label floating>Amount</ion-label>
-      <ion-input type="number" formControlName="amount"></ion-input>
+      <ion-input type="number" formControlName="amount" [disabled]="operationToEdit"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-textarea placeholder="Enter a description" formControlName="description"></ion-textarea>
+        <ion-textarea placeholder="Enter a description" formControlName="description" [disabled]="operationToEdit"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="occurrenceDate"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="occurrenceDate" [disabled]="operationToEdit"></ion-datetime>
     </ion-item>
 
   </ion-list>
 
-  <button ion-button block color="primary" (click)="takePicture()">Tomar foto</button>
+  <button *ngIf="!operationToEdit" ion-button block color="primary" (click)="takePicture()">Tomar foto</button>
 
   <ion-img width="80" height="80" [src]="base64Image"></ion-img>
 
-  <button ion-button block color="primary" (click)="saveOperation()">Guardar operación</button>
+  <button *ngIf="!operationToEdit" ion-button block color="primary" (click)="saveOperation()">Guardar operación</button>
 
 </ion-content>

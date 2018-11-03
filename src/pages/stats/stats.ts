@@ -20,7 +20,11 @@ export class StatsPage {
 
   public account: any = {};
 
-  constructor(private operationProvider: OperationProvider, private storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private operationProvider: OperationProvider,
+    private storage: Storage,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
     this.storage.get('account').then( val => {
       this.account = val;
     })
@@ -43,11 +47,12 @@ export class StatsPage {
   }
 
   createOperation(operationType) {
-    if (operationType) {
-      this.navCtrl.push(OperationFormPage, {operationType});
-    } else {
-      this.navCtrl.push(OperationFormPage, {operationType});
-    }
+    this.navCtrl.push(OperationFormPage, {operationType});
+  }
+
+  editOperation(operation) {
+    console.log('edit operation', operation);
+    this.navCtrl.push(OperationFormPage, {operation});
   }
 
 }

@@ -9,7 +9,6 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
     <ion-grid>
@@ -24,7 +23,7 @@
 
       <ion-col col-12>
         <ion-list>
-          <button ion-item *ngFor="let item of account.operations">
+          <button ion-item *ngFor="let item of account.operations" (click)="editOperation(item)">
             <ion-grid>
               <ion-row>
                 <ion-col col-11>
@@ -44,15 +43,9 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
-
-
-
-
           </button>
         </ion-list>
       </ion-col>
-
     </ion-grid>
-
 
 </ion-content>
