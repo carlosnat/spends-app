@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only color="royal" menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>accounts</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <button ion-button block (click)="viewdetail(account)" *ngFor="let account of accounts | async">{{ account.name }}</button>
+
+    <ion-fab right bottom>
+        <button ion-fab (click)="createAccount()"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
+</ion-content>

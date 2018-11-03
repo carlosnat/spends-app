@@ -1,0 +1,36 @@
+<!--
+  Generated template for the CategoryFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>categoryForm</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list [formGroup]="categoryForm">
+
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Color</ion-label>
+      <ion-input type="text" formControlName="color"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button *ngIf="!category" ion-button block color="primary" (click)="createCategory()">Crear categoria</button>
+  <button *ngIf="category" ion-button block color="primary" (click)="editCategory()">Editar categoria</button>
+  <button *ngIf="category" ion-button block outline color="danger" (click)="deleteCategory()">Eliminar categoria</button>
+
+</ion-content>

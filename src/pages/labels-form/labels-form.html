@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>labelsForm</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list [formGroup]="labelForm">
+
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select formControlName="belongsToGroup">
+          <ion-option *ngFor="let item of account?.spendsGroups" [value]="item._id">{{ item.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Color</ion-label>
+        <ion-input type="text" formControlName="icono"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button *ngIf="!label" ion-button block color="primary" (click)="createLabel()">Crear etiqueta</button>
+    <button *ngIf="label" ion-button block color="primary" (click)="editLabel()">Editar etiqueta</button>
+    <button *ngIf="label" ion-button block outline color="danger" (click)="deleteLabel()">Eliminar etiqueta</button>
+
+</ion-content>

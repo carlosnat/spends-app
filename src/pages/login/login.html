@@ -1,0 +1,21 @@
+<ion-content padding>
+
+    <div class="img-login">
+      <img src="https://via.placeholder.com/350x250" alt="">
+    </div>
+
+    <form [formGroup]="userForm" (ngSubmit)="login()">
+      <ion-item>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <button ion-button block type="submit" [disabled]="!userForm.valid">Entrar</button>
+    </form>
+    <button ion-button block color="primary" clear (click)="signup()">Crear cuenta ?</button>
+
+
+</ion-content>

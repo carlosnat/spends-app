@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button icon-only color="royal" menuToggle start>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>labels</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+      <button ion-item *ngFor="let item of account.categories" (click)="editLabel(item)">
+        {{ item.name }}
+      </button>
+    </ion-list>
+
+    <ion-fab right bottom>
+      <button ion-fab (click)="createLabel()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+</ion-content>

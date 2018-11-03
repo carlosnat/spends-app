@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>operationForm</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <p *ngIf="operationType"> Nuevo Ingreso</p>
+  <p *ngIf="!operationType"> Nuevo Egreso</p>
+
+  <ion-list [formGroup]="operationForm">
+
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select (ionChange)="selectCategory()" formControlName="group">
+        <ion-option [value]="category._id" *ngFor="let category of account.spendsGroups">
+          {{ category.name }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Labels</ion-label>
+      <ion-select formControlName="category">
+        <ion-option [value]="label._id" *ngFor="let label of labelsOptions">
+          {{ label.name }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Amount</ion-label>
+      <ion-input type="number" formControlName="amount"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-textarea placeholder="Enter a description" formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="occurrenceDate"></ion-datetime>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block color="primary" (click)="takePicture()">Tomar foto</button>
+
+  <ion-img width="80" height="80" [src]="base64Image"></ion-img>
+
+  <button ion-button block color="primary" (click)="saveOperation()">Guardar operación</button>
+
+</ion-content>
