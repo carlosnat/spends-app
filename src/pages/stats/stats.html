@@ -11,15 +11,11 @@
 
 <ion-content padding>
 
+    <ion-fab right bottom>
+      <button ion-fab (click)="presentActionSheet()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+
     <ion-grid>
-      <ion-row>
-        <ion-col col-6>
-            <button ion-button color="light" round block (click)="createOperation(true)">Nuevo ingreso</button>
-        </ion-col>
-        <ion-col col-6>
-            <button ion-button color="light" round block (click)="createOperation(false)">Nuevo egreso</button>
-          </ion-col>
-      </ion-row>
 
       <ion-col col-12>
         <ion-list>

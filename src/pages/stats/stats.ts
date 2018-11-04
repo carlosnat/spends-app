@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { OperationFormPage } from '../operation-form/operation-form';
 import { Storage } from '@ionic/storage';
 import { OperationProvider } from '../../providers/operation/operation';
@@ -21,6 +21,7 @@ export class StatsPage {
   public account: any = {};
 
   constructor(
+    public actionSheetCtrl: ActionSheetController,
     private operationProvider: OperationProvider,
     private storage: Storage,
     public navCtrl: NavController,
@@ -28,6 +29,28 @@ export class StatsPage {
     this.storage.get('account').then( val => {
       this.account = val;
     })
+  }
+
+  presentActionSheet() {
+    const actionSheet = this.actionSheetCtrl.create({
+      title: 'Crear nueva operación',
+      buttons: [
+        {
+          text: 'Nuevo Egreso',
+          handler: () => this.createOperation(true)
+        },{
+          text: 'Nuevo Ingreso',
+          handler: () => this.createOperation(false)
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
   async ionicViewDidLoad(){

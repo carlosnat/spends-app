@@ -56,7 +56,9 @@
 
   <button *ngIf="!operationToEdit" ion-button block color="primary" (click)="takePicture()">Tomar foto</button>
 
-  <ion-img width="80" height="80" [src]="base64Image"></ion-img>
+  <ion-img style="max-width:20rem" [src]="base64Image"></ion-img>
+
+  <ion-img style="max-width:20rem" *ngIf="operationToEdit?.image.url" [src]="operationToEdit.image.url"></ion-img>
 
   <button *ngIf="!operationToEdit" ion-button block color="primary" (click)="saveOperation()">Guardar operación</button>
 

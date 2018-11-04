@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { Camera } from '@ionic-native/camera';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 import { MyApp } from './app.component';
 
@@ -54,6 +56,9 @@ import { FamilyProvider } from '../providers/family/family';
     CategoryProvider,
     LabelProvider,
     Camera,
+    FileTransfer,
+    FileTransferObject,
+    File,
     FamilyProvider
   ]
 })
