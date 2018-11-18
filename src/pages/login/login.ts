@@ -42,6 +42,7 @@ export class LoginPage {
         this.navCtrl.setRoot(AccountsPage);
       },
       err => {
+        console.log(err);
         this.loading.dismiss();
         this.presentToast(err.error.message);
       }
@@ -65,7 +66,6 @@ export class LoginPage {
       duration: 3000,
       position: "bottom"
     });
-
     toast.present();
   }
 }
