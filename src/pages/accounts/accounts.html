@@ -8,9 +8,21 @@
 </ion-header>
 
 <ion-content padding>
-    <button ion-button block (click)="viewdetail(account)" *ngFor="let account of accounts | async">{{ account.name }}</button>
 
-    <ion-fab right bottom>
-        <button ion-fab (click)="createAccount()"><ion-icon name="add"></ion-icon></button>
-      </ion-fab>
+  <div *ngIf="accounts.length === 0">
+    <span>Debes crear una cuenta para iniciar el control de tus gastos.</span>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let account of accounts" (click)="viewdetail(account)">
+      <h2>{{ account.name }}</h2>
+      <p>Ingresos: $100.000 / Egresos: $35.000</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="createAccount()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

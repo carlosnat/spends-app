@@ -5,41 +5,40 @@
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="userForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input id="name" type="text" formControlName="name"></ion-input>
+      </ion-item>
 
-  <ion-list [formGroup]="userForm">
+      <ion-item>
+        <ion-label floating>Last name</ion-label>
+        <ion-input type="text" formControlName="lastname"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Name</ion-label>
-      <ion-input type="text" formControlName="name"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Last name</ion-label>
-      <ion-input type="text" formControlName="lastName"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Avatar</ion-label>
+        <ion-input type="text" formControlName="avatar"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label>Birthdate</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthdate"></ion-datetime>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Avatar</ion-label>
-      <ion-input type="text" formControlName="avatar"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Birthdate</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthdate"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
-
-  </ion-list>
-
-  <button ion-button block color="primary" (click)="createUser()">Crear usuario</button>
-
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block color="primary" (click)="createUser()" [disabled]="!userForm.valid">
+      Crear usuario
+    </button>
+  </form>
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController } from "ionic-angular";
 import { UserProvider } from "../../providers/user/user";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LoadingController } from "ionic-angular";
 import { ToastController } from "ionic-angular";
 @IonicPage()
@@ -25,12 +25,12 @@ export class SignupPage {
 
   createUserForm() {
     this.userForm = this.fb.group({
-      name: [""],
-      email: [""],
-      lastName: [""],
+      name: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      lastname: ["", Validators.required],
       avatar: [""],
       birthdate: [""],
-      password: [""]
+      password: ["", Validators.required]
     });
   }
 
