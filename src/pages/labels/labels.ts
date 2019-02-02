@@ -10,10 +10,12 @@ import { Storage } from '@ionic/storage';
 export class LabelsPage {
 
   public account: any = {};
+  public canCreateLabel = false;
 
   constructor(private storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
     this.storage.get('account').then( val => {
       this.account = val;
+      if (this.account.spendsGroups.length > 0) this.canCreateLabel = true;
     });
   }
 

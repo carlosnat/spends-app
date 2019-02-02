@@ -32,6 +32,12 @@ export class LoginPage {
     });
   }
 
+  ionViewDidEnter() {
+    setTimeout( () => {
+      this.login();
+    }, 1000)
+  }
+
   login() {
     this.presentLoading();
     this.userProvider.login(this.userForm.value).subscribe(

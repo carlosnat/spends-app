@@ -33,7 +33,7 @@ export class AccountsPage implements OnDestroy {
     this.$account.unsubscribe();
   }
 
-  async getAllFamilies() {
+  async getAllUserAccounts() {
     const userId = await this.storage.get("userId");
     this.$account = this.familyProvider
       .getFamiliesByUserId(userId)
@@ -45,7 +45,7 @@ export class AccountsPage implements OnDestroy {
   ionViewDidLoad() {}
 
   ionViewDidEnter() {
-    this.getAllFamilies();
+    this.getAllUserAccounts();
   }
 
   viewdetail(account) {

@@ -18,7 +18,13 @@
 
 <ion-content padding>
 
-  <ion-list>
+  <div>
+    <h6 *ngIf="account.spendsGroups && account.spendsGroups.length === 0">
+      Crea una categoria seleccionando el boton <strong>+</strong>
+    </h6>
+  </div>
+
+  <ion-list *ngIf="account.spendsGroups && account.spendsGroups.length > 0">
     <button ion-item *ngFor="let item of account.spendsGroups" (click)="editCategory(item)">
       {{ item.name }}
     </button>

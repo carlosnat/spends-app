@@ -7,11 +7,11 @@
   <form [formGroup]="userForm" (ngSubmit)="login()">
     <ion-item>
       <ion-label floating>Correo electronico</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
+      <ion-input type="text" formControlName="email" value="carlos@correo.com"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Contraseña</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-input type="password" formControlName="password" value="asdf1234"></ion-input>
     </ion-item>
     <button ion-button block type="submit" [disabled]="!userForm.valid">Entrar</button>
   </form>

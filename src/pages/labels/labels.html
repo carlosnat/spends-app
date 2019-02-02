@@ -11,6 +11,12 @@
 
 
 <ion-content padding>
+    <div>
+      <h6 *ngIf="!canCreateLabel">Debes crear primero una categoria</h6>
+      <h6 *ngIf="account.categories && account.categories.length === 0">
+          Crea una <strong>ETIQUETA</strong> seleccionando el boton <strong>+</strong>
+      </h6>
+    </div>
 
     <ion-list>
       <button ion-item *ngFor="let item of account.categories" (click)="editLabel(item)">
@@ -19,6 +25,6 @@
     </ion-list>
 
     <ion-fab right bottom>
-      <button ion-fab (click)="createLabel()"><ion-icon name="add"></ion-icon></button>
+      <button [disabled]="!canCreateLabel" ion-fab (click)="createLabel()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
 </ion-content>

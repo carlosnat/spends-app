@@ -19,6 +19,7 @@ import { OperationProvider } from '../../providers/operation/operation';
 export class StatsPage {
 
   public account: any = {};
+  public canCreateOperation = false;
 
   constructor(
     public actionSheetCtrl: ActionSheetController,
@@ -29,6 +30,13 @@ export class StatsPage {
     this.storage.get('account').then( val => {
       this.account = val;
     })
+  }
+
+  verifyCanCreateOperation() {
+    console.log(this.account);
+    if (this.account.spendsGroups.length > 0 && this.account.categories.length > 0){
+      this.canCreateOperation = true;
+    }
   }
 
   presentActionSheet() {
@@ -53,11 +61,13 @@ export class StatsPage {
     actionSheet.present();
   }
 
-  async ionicViewDidLoad(){
+  async ionViewDidLoad(){
+    console.log('Hola carlos load');
     await this.updateStats();
   }
 
   async ionViewDidEnter() {
+    console.log('Hola carlos enter');
     await this.updateStats();
   }
 
@@ -66,6 +76,7 @@ export class StatsPage {
     await this.operationProvider.getAllByFamilyId(this.account._id).subscribe( res => {
       this.account.operations = res;
       this.storage.set('account', this.account);
+      this.verifyCanCreateOperation();
     });
   }
 

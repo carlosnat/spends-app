@@ -10,8 +10,8 @@
 <ion-content padding>
 
   <span *ngIf="!operationToEdit">
-    <p *ngIf="operationType"> Nuevo Ingreso</p>
-    <p *ngIf="!operationType"> Nuevo Egreso</p>
+    <p *ngIf="!operationType"> Nuevo Ingreso</p>
+    <p *ngIf="operationType"> Nuevo Egreso</p>
   </span>
 
   <span *ngIf="operationToEdit">

@@ -12,12 +12,15 @@
 <ion-content padding>
 
     <ion-fab right bottom>
-      <button ion-fab (click)="presentActionSheet()"><ion-icon name="add"></ion-icon></button>
+      <button [disabled]="!canCreateOperation" ion-fab (click)="presentActionSheet()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
 
     <ion-grid>
 
       <ion-col col-12>
+        <div *ngIf="!canCreateOperation">
+          <h6>Debes crear primero una categoria y etiquetas</h6>
+        </div>
         <ion-list>
           <button ion-item *ngFor="let item of account.operations" (click)="editOperation(item)">
             <ion-grid>
@@ -34,8 +37,8 @@
                   </ion-col>
                 </ion-col>
                 <ion-col col-1>
-                    <ion-icon class="arrow-outflow" *ngIf="item.type === 'outflow'" name="arrow-round-down"></ion-icon>
-                    <ion-icon class="arrow-inflow" *ngIf="item.type === 'inflow'" name="arrow-round-up"></ion-icon>
+                    <ion-icon class="arrow-inflow" *ngIf="item.type === 'outflow'" name="arrow-round-up"></ion-icon>
+                    <ion-icon class="arrow-outflow" *ngIf="item.type === 'inflow'" name="arrow-round-down"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-grid>
